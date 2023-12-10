@@ -1,7 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Ketua;
+namespace App\Http\Controllers\Sekretaris;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+use App\Models\SuratModel;
+
+// use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 // use str;
 use file;
@@ -9,21 +14,34 @@ use DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 
-use Illuminate\Http\Request;
-use App\Models\SuratModel;
-// use str;
 
-class AjukanSuratController extends Controller
+class RevAjukanTolakController extends Controller
 {
-    private $title  ='halaman Surat Masuk';
-    private $views  = 'Ketua/AjukanSurat';
-    private $url    = 'ketua/ajukan-masuk';
     /**
      * Display a listing of the resource.
      */
+
+    private $title  = 'Halaman Surat Masuk';
+    private $view   = 'Sekretaris/SuratMasukTolak';
+    private $url    = 'sekretaris/rev-surat-masuk-tolak';
+
+    public function tolak($id)
+    {
+        $surat = SuratModel::where('id',$id)->first();
+
+        $data = [
+            'title' => $this->title,
+            'url'   => $this->url,
+            'page'  => 'Edit surat masuk',
+            'surat' => $surat
+        ];
+
+        return view("$this->view"."/edit",$data);
+    }
+
     public function index()
     {
-        $surat = SuratModel::where('status_sekre',1)->where('status_ketua',3)->get();
+        $surat = SuratModel::where('status_sekre',0)->where('status_ketua',3)->get();
         $data = [
             'title' => $this->title,
             'url'   => $this->url,
@@ -31,7 +49,7 @@ class AjukanSuratController extends Controller
             'surat' => $surat
         ];
 
-        return view("$this->views"."/index",$data);
+        return view("Sekretaris/SuratMasuk/"."/index",$data);
     }
 
     /**
@@ -47,30 +65,7 @@ class AjukanSuratController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'jenis' => 'required|string',
-            'lampiran'  => 'required|file|mimes:jpg,doc,docx',
-        ]);
-
-        $fileExtension = $request->file('lampiran')->extension();
-        $allowedImageExtensions = ['jpeg', 'jpg', 'png'];
-
-        //handle document upload
-        if($request->hashfile('lampiran')){
-            $documentFile = $request->file('lampiran');
-            $documentFileName = Str::uuid() . "-" . time() . "." . $documentFile->extension();
-            $documentFile->move("Assets/Admin/Upload", $documentFileName);
-        }
-         $data = [
-            'id_users'      => session()->get('id'),
-            'lampiran'      => $documentFileName,
-            'jenis'         => $request->jenis,
-            'status_sekre'  => 0,
-            'status_ketua'  => 4
-         ];
-         SuratModel::crete($data);
-
-         return redirect("$this->url")->with('sukses', 'Lampiran berhasil ditambahkan');
+        //
     }
 
     /**
@@ -78,16 +73,7 @@ class AjukanSuratController extends Controller
      */
     public function show(string $id)
     {
-        $surat = SuratModel::where('id',$id)->first();
-        $data = [
-            'title' => $this->title,
-            'url'   => $this->url,
-            'page'  => 'Show Data surat masuk',
-            'surat' => $surat
-        ];
-
-        return view("$this->views"."/show",$data);
-
+        //
     }
 
     /**
@@ -96,14 +82,15 @@ class AjukanSuratController extends Controller
     public function edit(string $id)
     {
         $surat = SuratModel::where('id',$id)->first();
+
         $data = [
             'title' => $this->title,
             'url'   => $this->url,
-            'page'  => 'Edit Data surat masuk',
+            'page'  => 'Tolakdit surat masuk',
             'surat' => $surat
         ];
 
-        return view("$this->views"."/edit",$data);
+        return view("$this->view"."/edit",$data);
     }
 
     /**
@@ -113,11 +100,11 @@ class AjukanSuratController extends Controller
     {
         $request->validate([
             'jenis'     => 'required|string',
-            'lampiran'  => 'required|file|mimes:pdf,doc,docx',
+            // 'lampiran'  => 'required|file|mimes:pdf,doc,docx',
         ]);
     
-        $fileExtension = $request->file('lampiran')->extension();
-        $allowedImageExtensions = ['jpeg', 'jpg', 'png'];
+        // $fileExtension = $request->file('lampiran')->extension();
+        // $allowedImageExtensions = ['jpeg', 'jpg', 'png'];
     
         // Handle document upload
         if(isset($request->lampiran)){
@@ -128,11 +115,12 @@ class AjukanSuratController extends Controller
                     $documentFile->move("Assets/Admin/Upload", $documentFileName);
             }
             $data = [
-                'id_users'      => $request->id_users,
-                'lampiran'      => $documentFileName,
+                'id_users'      => session()->get('id'),
+                'lampiran'      => $request->lampiran,
                 'jenis'         => $request->jenis,
-                'status_sekre'  => $request->status_sekre,
-                'status_ketua'  => 4
+                'status_sekre'  => 2,
+                'status_ketua'  => $request->status_ketua,
+                'catatan'       => $request->catatan
             ];
         
             SuratModel::where('id', $request->id)->update($data);
@@ -140,11 +128,12 @@ class AjukanSuratController extends Controller
             return redirect("$this->url")->with('sukses', 'Lampiran berhasil diedit');
         }else{
             $data = [
-                'id_users'      => $request->id_users,
+                'id_users'      => session()->get('id'),
                 // 'lampiran'      => $documentFileName,
                 'jenis'         => $request->jenis,
-                'status_sekre'  => $request->status_sekre,
-                'status_ketua'  => 4
+                'status_sekre'  => 2,
+                'status_ketua'  => $request->status_ketua,
+                'catatan'       => $request->catatan
             ];
         
             SuratModel::where('id', $request->id)->update($data);
@@ -154,12 +143,6 @@ class AjukanSuratController extends Controller
     
         
     }
-
-    public function tolak()
-    {
-
-    }
-
     
     public function download($id)
     {

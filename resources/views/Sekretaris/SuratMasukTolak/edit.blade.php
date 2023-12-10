@@ -10,6 +10,7 @@
         margin-bottom: 20px;
         /* Sesuaikan nilai sesuai kebutuhan */
     }
+
 </style>
 
 @endsection
@@ -19,7 +20,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>{{$page}}</h3>
+                <h3>{{$page}} "{{$surat->jenis}}"</h3>
             </div>
             @if (session()->has('sukses'))
             <div class="alert alert-success" role="alert">
@@ -52,35 +53,61 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>{{$page}}</h2>
+                        <h2>{{$page}} <small>lampiran yang anda kirim sebelumnya akan terhapus secara default</small>
+                        </h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="{{url('anggota/rev-ajukan-surat')}}" method="POST" id="demo-form2" data-parsley-validate
-                            class="form-horizontal form-label-left" enctype="multipart/form-data">
+                        <form action="{{url('sekretaris/rev-surat-masuk-tolak/update')}}" method="POST" id="demo-form2"
+                            data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
+                            <input type="hidden" name="id" value="{{$surat->id}}">
+                            <input type="hidden" name="status_ketua" value="{{$surat->status_ketua}}">
+                            <input type="hidden" name="lampiran" value="{{$surat->lampiran}}">
                             <div class="item form-group">
-                                <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Jenis Surat
+                                <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Jenis
+                                    Surat
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <input id="middle-name" class="form-control" type="text" name="jenis"
-                                        placeholder="Jenis Surat" required>
+                                        placeholder="Jenis Surat" value="{{$surat->jenis}}" required>
                                 </div>
                             </div>
 
-                            <div class="item form-group">
-                                <label for="formFileMultiple" class="col-form-label col-md-3 col-sm-3 label-align">Lampiran</label>
+                            <!-- <div class="item form-group">
+                                <label for="formFileMultiple"
+                                    class="col-form-label col-md-3 col-sm-3 label-align">Lampiran</label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input id="photoInput" class="form-control" type="file" name="lampiran" placeholder="isikan foto produk" required>
+                                    @if($surat->lampiran)
+                                    <p>File saat ini: <a href="{{ asset('/Assets/Admin/Upload/' . $surat->lampiran) }}"
+                                            target="_blank">{{ $surat->lampiran }}</a></p>
+                                    @endif
+                                </div>
+                            </div> -->
+                            <!-- <div class="item form-group">
+                                <label for="formFileMultiple"
+                                    class="col-form-label col-md-3 col-sm-3 label-align">Aksi</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <select class="form-control" name="status_sekre" id="">
+                                        <option value="1">Acc</option>
+                                        <option value="2">Tolak</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="item form-group">
+                                <label for="formFileMultiple" class="col-form-label col-md-3 col-sm-3 label-align">Catatan</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input id="photoInput" class="form-control" type="text" name="catatan" value="{{$surat->catatan}}" required>
                                 </div>
                             </div>
-
 
                             <div class="ln_solid"></div>
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">
-                                    <a href="{{url('anggota/dashboard')}}"><button class="btn btn-danger" type="button">Kembali</button></a>
+                                    <a href="{{url('sekretaris/rev-surat-masuk')}}"><button class="btn btn-danger"
+                                            type="button">Kembali</button></a>
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
@@ -113,6 +140,7 @@
             imagePreview.style.display = 'none';
         }
     }
+
 </script>
 
 @endsection

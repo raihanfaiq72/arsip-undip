@@ -59,12 +59,13 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="{{url('anggota/ajukan-surat/update')}}" method="POST" id="demo-form2"
+                        <form action="{{url('anggota/rev-ajukan-surat/update')}}" method="POST" id="demo-form2"
                             data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="id" value="{{$surat->id}}">
                             <input type="hidden" name="status_sekre" value="{{$surat->status_sekre}}">
+                            <input type="hidden" name="status_ketua" value="{{$surat->status_ketua}}">
                             <div class="item form-group">
                                 <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Jenis
                                     Surat

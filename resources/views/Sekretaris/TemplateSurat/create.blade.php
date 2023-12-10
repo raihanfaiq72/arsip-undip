@@ -57,7 +57,7 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="{{url('sekretaris/template-surat')}}" method="POST" id="demo-form2" data-parsley-validate
+                        <form action="{{url('sekretaris/rev-template-surat')}}" method="POST" id="demo-form2" data-parsley-validate
                             class="form-horizontal form-label-left" enctype="multipart/form-data">
                             @csrf
                             <div class="item form-group">

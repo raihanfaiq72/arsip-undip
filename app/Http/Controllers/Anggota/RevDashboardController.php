@@ -8,32 +8,30 @@ use Illuminate\Http\Request;
 use App\Models\SuratModel;
 use App\Models\UserModel;
 
-class DashboardController extends Controller
+class RevDashboardController extends Controller
 {
     private $title = 'Halaman Dashboard Anggota';
-    private $views = 'Anggota/Dashboard';
-    
+    private $views = 'Anggota/Dashboard'; 
     /**
      * Display a listing of the resource.
      */
-
-     public function __construct()
-     {
-        $users = UserModel::get();
-     }
-    public function index()
+    public function __construct()
     {
-        $suratAjukan = SuratModel::where('id_users',session()->get('id'))->where('status_sekre',0)->where('status_ketua',0)->count();
-        $surattolaksekre = SuratModel::where('id_users', session()->get('id'))->where('status_sekre', '2')->count();
-
-        $data = [
-            'surattolaksekre' => $surattolaksekre,
-            'title' => $this->title,
-            'page'  => 'data oll'
-        ];
-
-        // return view("$this->views"."/index",$data);
+       $users = UserModel::get();
     }
+   public function index()
+   {
+       $suratAjukan = SuratModel::where('id_users',session()->get('id'))->where('status_sekre',0)->where('status_ketua',0)->count();
+       $surattolaksekre = SuratModel::where('id_users', session()->get('id'))->where('status_sekre', '2')->count();
+
+       $data = [
+           'surattolaksekre' => $surattolaksekre,
+           'title' => $this->title,
+           'page'  => 'data oll'
+       ];
+
+       return view("$this->views"."/index",$data);
+   }
 
     /**
      * Show the form for creating a new resource.

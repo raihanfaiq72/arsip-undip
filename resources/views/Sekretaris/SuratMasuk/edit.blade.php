@@ -59,7 +59,7 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="{{url('sekretaris/surat-masuk/update')}}" method="POST" id="demo-form2"
+                        <form action="{{url('sekretaris/rev-surat-masuk/update')}}" method="POST" id="demo-form2"
                             data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
 
-                            <div class="item form-group">
+                            <!-- <div class="item form-group">
                                 <label for="formFileMultiple"
                                     class="col-form-label col-md-3 col-sm-3 label-align">Lampiran</label>
                                 <div class="col-md-6 col-sm-6">
@@ -85,8 +85,8 @@
                                             target="_blank">{{ $surat->lampiran }}</a></p>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="item form-group">
+                            </div> -->
+                            <!-- <div class="item form-group">
                                 <label for="formFileMultiple"
                                     class="col-form-label col-md-3 col-sm-3 label-align">Aksi</label>
                                 <div class="col-md-6 col-sm-6">
@@ -95,15 +95,18 @@
                                         <option value="2">Tolak</option>
                                     </select>
                                 </div>
+                            </div> -->
+                            <div class="item form-group">
+                                <label for="formFileMultiple" class="col-form-label col-md-3 col-sm-3 label-align">Lampiran</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input id="photoInput" class="form-control" type="file" name="lampiran" placeholder="isikan foto produk" required>
+                                </div>
                             </div>
-
-
-
 
                             <div class="ln_solid"></div>
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">
-                                    <a href="{{url('anggota/dashboard')}}"><button class="btn btn-danger"
+                                    <a href="{{url('sekretaris/rev-surat-masuk')}}"><button class="btn btn-danger"
                                             type="button">Kembali</button></a>
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>

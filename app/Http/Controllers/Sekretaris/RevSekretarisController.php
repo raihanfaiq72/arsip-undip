@@ -1,40 +1,39 @@
 <?php
 
-namespace App\Http\Controllers\Anggota;
+namespace App\Http\Controllers\Sekretaris;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
 
 use App\Models\SuratModel;
 use App\Models\UserModel;
 
-class DashboardController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+// use str;
+use file;
+use DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+
+class RevSekretarisController extends Controller
 {
-    private $title = 'Halaman Dashboard Anggota';
-    private $views = 'Anggota/Dashboard';
-    
     /**
      * Display a listing of the resource.
      */
 
-     public function __construct()
+     private $url   = 'sekretaris/rev-dashboard';
+     private $view  = 'Sekretaris/Dashboard';
+     private $title = 'Halaman Dashboard Sekretaris';
+
+     public function index()
      {
-        $users = UserModel::get();
-     }
-    public function index()
-    {
-        $suratAjukan = SuratModel::where('id_users',session()->get('id'))->where('status_sekre',0)->where('status_ketua',0)->count();
-        $surattolaksekre = SuratModel::where('id_users', session()->get('id'))->where('status_sekre', '2')->count();
-
         $data = [
-            'surattolaksekre' => $surattolaksekre,
             'title' => $this->title,
-            'page'  => 'data oll'
+            'url'   => $this->url,
+            'page'  => 'tampilan Halaman',
+            'footer'    => "anjay"
         ];
-
-        // return view("$this->views"."/index",$data);
-    }
-
+        return view("$this->view".'/index', $data);
+     }
     /**
      * Show the form for creating a new resource.
      */

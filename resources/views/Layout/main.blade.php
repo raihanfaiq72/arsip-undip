@@ -103,16 +103,16 @@
                             </h3>
                             @if(session()->get('role')==3)
                             <ul class="nav side-menu">
-                                <li><a href="{{url('anggota/dashboard')}}"><i class="fa fa-home"></i> Home </a>
+                                <li><a href="{{url('anggota/rev-dashboard')}}"><i class="fa fa-home"></i> Home </a>
                                 </li>
-                                <li><a href="{{url('anggota/ajukan-surat')}}/create"><i class="fa fa-edit"></i> Ajukan
+                                <li><a href="{{url('anggota/rev-ajukan-surat')}}/create"><i class="fa fa-edit"></i> Ajukan
                                         Surat
                                     </a>
                                 </li>
-                                <li><a href="{{url('anggota/ajukan-surat')}}"><i class="fa fa-desktop"></i> Info Surat
+                                <li><a href="{{url('anggota/rev-ajukan-surat')}}"><i class="fa fa-desktop"></i> Info Surat
                                     </a>
                                 </li>
-                                <li><a href="{{url('anggota/template-surat')}}"><i class="fa fa-desktop"></i> Template
+                                <li><a href="{{url('anggota/rev-template-surat')}}"><i class="fa fa-desktop"></i> Template
                                         Surat
                                     </a>
                                 </li>
@@ -124,16 +124,20 @@
                             </ul>
                             @elseif(session()->get('role')==2)
                             <ul class="nav side-menu">
-                                <li><a href="{{url('sekretaris/dashboard')}}"><i class="fa fa-home"></i> Home </a>
+                                <li><a href="{{url('sekretaris/rev-dashboard')}}"><i class="fa fa-home"></i> Home </a>
                                 </li>
-                                <li><a href="{{url('sekretaris/surat-masuk')}}"><i class="fa fa-edit"></i> Surat Masuk
+                                <li><a href="{{url('sekretaris/rev-surat-masuk')}}"><i class="fa fa-edit"></i> Surat Masuk
                                     </a>
                                 </li>
-                                <li><a href="{{url('sekretaris/pengajuan-surat')}}"><i class="fa fa-desktop"></i> Pengajuan
+                                <!-- <li><a href="{{url('sekretaris/rev-pengajuan-surat')}}"><i class="fa fa-desktop"></i> Pengajuan
                                     </a>
-                                </li>
-                                <li><a href="{{url('sekretaris/template-surat')}}"><i class="fa fa-desktop"></i>
+                                </li> -->
+                                <li><a href="{{url('sekretaris/rev-template-surat')}}"><i class="fa fa-desktop"></i>
                                         Template Surat
+                                    </a>
+                                </li>
+                                <li><a href="{{url('sekretaris/rev-status-surat')}}"><i class="fa fa-desktop"></i>
+                                        Status Surat
                                     </a>
                                 </li>
                                 <li>

@@ -62,7 +62,7 @@
                                             <p>{{ $p->keterangan }}</p>
                                             <div class="tools tools-bottom">
                                                 <a
-                                                    href="{{ route('anggota.template-surat.download', ['id' => $p->id]) }}"><i
+                                                    href="{{ route('anggota.rev-template-surat.download', ['id' => $p->id]) }}"><i
                                                         class="fa fa-download"></i></a>
                                                 
                                                 </a>

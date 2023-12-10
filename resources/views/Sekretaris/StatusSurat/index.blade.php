@@ -63,9 +63,10 @@
 
 
                                         <tbody>
-                                            @forelse($surat as $p)
-                                            <tr style="{{ ($p->status_ketua == 4) ? 'background-color: #99ff99;' : (($p->status_sekre == 2 || $p->status_ketua == 5) ? 'background-color: #ff9999;' : '') }}">
-                                            <td>{{$loop->iteration}}</td>
+                                            @forelse($template as $p)
+                                            <tr
+                                                style="{{ ($p->status_ketua == 4) ? 'background-color: #99ff99;' : (($p->status_sekre == 2 || $p->status_ketua == 5) ? 'background-color: #ff9999;' : '') }}">
+                                                <td>{{$loop->iteration}}</td>
                                                 <td>{{$p->jenis}}</td>
                                                 <td>{{$p->lampiran}}</td>
                                                 <td style="{{ ($p->status_sekre == 2) ? 'color: #ff0000;' : '' }}">
@@ -88,11 +89,13 @@
                                                 </td>
                                                 <td>
                                                     @if($p->status_sekre != 2 && $p->status_ketua != 5)
-                                                    <a href="{{url('ketua/rev-ajukan-surat/'.$p->id,[])}}/edit">Aksi</a>
-                                                    | <a href="{{url('ketua/ajukan-masuk'.$p->id,[])}}">show</a> | delete
+                                                    <a href="{{url('sekretaris/status-surat/'.$p->id,[])}}" target="__blank">show</a>  
                                                     @endif
                                                 </td>
                                             </tr>
+
+
+
                                             @empty
                                             <div class="alert alert-danger">
                                                 Data {{$page}} belum Tersedia silahkan tambah.

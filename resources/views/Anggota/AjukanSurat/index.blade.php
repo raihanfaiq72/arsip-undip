@@ -68,7 +68,7 @@
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$p->jenis}}</td>
                                                 <td>{{$p->lampiran}}</td>
-                                                <!-- <td style="{{ ($p->status_sekre == 2) ? 'color: #ff0000;' : '' }}">
+                                                <td style="{{ ($p->status_sekre == 2) ? 'color: #ff0000;' : '' }}">
                                                     @if($p->status_sekre == 0)
                                                     Sedang diajukan
                                                     @elseif($p->status_sekre == 1)
@@ -76,7 +76,7 @@
                                                     @elseif($p->status_sekre == 2)
                                                     Ditolak sekre
                                                     @endif
-                                                </td> -->
+                                                </td>
                                                 <td style="{{ ($p->status_ketua == 5) ? 'color: #ff0000;' : '' }}">
                                                     @if($p->status_ketua == 3)
                                                     Sedang diajukan
@@ -91,9 +91,9 @@
                                                     <a
                                                         href="{{ route('anggota.ajukan-surat.download', ['id' => $p->id]) }}">Download</a>
                                                     @elseif($p->status_sekre == 0 && $p->status_ketua == 3)
-                                                    <a href="{{url('anggota/ajukan-surat/'.$p->id,[])}}/edit"> Edit</a>
+                                                    <a href="{{url('anggota/rev-ajukan-surat/'.$p->id,[])}}/edit"> Edit</a>
                                                     | <a href="{{ route('anggota.ajukan-surat.destroy', ['id' => $p->id]) }}"
-                                                        onclick="event.preventDefault(); if (confirm('dihapus rak , su?')) document.getElementById('delete-form').submit();">Delete</a>
+                                                        onclick="event.preventDefault(); if (confirm('dihapus su?')) document.getElementById('delete-form').submit();">Delete</a>
                                                     @else
                                                     <a href="{{ route('anggota.ajukan-surat.destroy', ['id' => $p->id]) }}"
                                                         onclick="event.preventDefault(); if (confirm('dihapus rak?')) document.getElementById('delete-form').submit();">Delete</a>

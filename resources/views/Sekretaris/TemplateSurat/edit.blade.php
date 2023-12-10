@@ -57,15 +57,17 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="{{url('anggota/rev-ajukan-surat')}}" method="POST" id="demo-form2" data-parsley-validate
+                        <form action="{{url('sekretaris/rev-template-surat')}}/update" method="POST" id="demo-form2" data-parsley-validate
                             class="form-horizontal form-label-left" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
+                            <input type="hidden" name="id" value="{{$template->id}}">
                             <div class="item form-group">
                                 <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Jenis Surat
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input id="middle-name" class="form-control" type="text" name="jenis"
-                                        placeholder="Jenis Surat" required>
+                                    <input id="middle-name" class="form-control" type="text" name="keterangan"
+                                        placeholder="Jenis Surat" required value="{{$template->keterangan}}">
                                 </div>
                             </div>
 

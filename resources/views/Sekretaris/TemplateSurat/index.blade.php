@@ -38,7 +38,7 @@
                         <h2>{{$page}}</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li>
-                                <a href="{{url('sekretaris/template-surat/create')}}"><button
+                                <a href="{{url('sekretaris/rev-template-surat/create')}}"><button
                                         class="btn btn-primary">Tambah</button></a>
                             </li>
                         </ul>
@@ -64,7 +64,7 @@
                                         <div class="mask">
                                             <p>{{ $p->keterangan }}</p>
                                             <div class="tools tools-bottom">
-                                                <a href="{{ url('sekretaris/template-surat'.$p->id, []) }}/edit"><i
+                                                <a href="{{ url('sekretaris/rev-template-surat/'.$p->id, []) }}/edit"><i
                                                         class="fa fa-pencil"></i></a>
                                                 <a
                                                     href="{{ route('sekretaris.template-surat.download', ['id' => $p->id]) }}"><i

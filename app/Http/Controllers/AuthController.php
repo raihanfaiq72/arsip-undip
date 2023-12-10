@@ -68,7 +68,7 @@ class AuthController extends Controller
             ];
 
             session($session);
-            return redirect('ketua/dashboard')->with('sukses', 'Berhasil Login');
+            return redirect('ketua/rev-dashboard')->with('sukses', 'Berhasil Login');
         } elseif($usersLogin->role == 2){
             $session = [
                 'id'        => $usersLogin->id,
@@ -78,7 +78,7 @@ class AuthController extends Controller
                 'isLogin'   => true,
             ];
             session($session);
-            return redirect('sekretaris/dashboard')->with('sukses', 'Berhasil Login');
+            return redirect('sekretaris/rev-dashboard')->with('sukses', 'Berhasil Login');
         }elseif($usersLogin->role == 3){
             $session=[
                 'id'        => $usersLogin->id,
@@ -88,7 +88,7 @@ class AuthController extends Controller
                 'isLogin'   => true,
             ];
             session($session);
-            return redirect('anggota/dashboard')->with('sukses', 'Berhasil Login');
+            return redirect('anggota/rev-dashboard')->with('sukses', 'Berhasil Login');
         }
 
         // Response
