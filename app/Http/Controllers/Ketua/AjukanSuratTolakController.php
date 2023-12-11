@@ -13,25 +13,25 @@ use Illuminate\Http\Request;
 use App\Models\SuratModel;
 // use str;
 
-class AjukanSuratController extends Controller
+class AjukanSuratTolakController extends Controller
 {
     private $title  ='halaman Surat Masuk';
     private $views  = 'Ketua/AjukanSurat';
-    private $url    = 'ketua/ajukan-masuk';
+    private $url    = 'ketua/ajukan-surat/tolak';
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        $surat = SuratModel::where('status_sekre',1)->where('status_ketua',3)->get();
+        $surat = SuratModel::where('id',$id)->first();
         $data = [
             'title' => $this->title,
             'url'   => $this->url,
-            'page'  => 'Data surat masuk',
+            'page'  => 'Edit Data surat masuk',
             'surat' => $surat
         ];
 
-        return view("$this->views"."/index",$data);
+        return view("$this->views"."/tolak",$data);
     }
 
     /**
@@ -62,7 +62,7 @@ class AjukanSuratController extends Controller
             $documentFile->move("Assets/Admin/Upload", $documentFileName);
         }
          $data = [
-            'id_users'      => session()->get('id'),
+            'id_users'      => $request->id_users,
             'lampiran'      => $documentFileName,
             'jenis'         => $request->jenis,
             'status_sekre'  => 0,
@@ -112,8 +112,8 @@ class AjukanSuratController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'jenis'     => 'required|string',
-            'lampiran'  => 'required|file|mimes:pdf,doc,docx',
+            // 'jenis'     => 'required|string',
+            // 'lampiran'  => 'required|file|mimes:pdf,doc,docx',
         ]);
     
         $fileExtension = $request->file('lampiran')->extension();
@@ -129,10 +129,11 @@ class AjukanSuratController extends Controller
             }
             $data = [
                 'id_users'      => $request->id_users,
-                'lampiran'      => $documentFileName,
+                'lampiran'      => $request->lampiran,
                 'jenis'         => $request->jenis,
                 'status_sekre'  => $request->status_sekre,
-                'status_ketua'  => 4
+                'status_ketua'  => 5,
+                'catatan'       => $request->catatan
             ];
         
             SuratModel::where('id', $request->id)->update($data);
@@ -141,10 +142,11 @@ class AjukanSuratController extends Controller
         }else{
             $data = [
                 'id_users'      => $request->id_users,
-                // 'lampiran'      => $documentFileName,
+                'lampiran'      => $request->lampiran,
                 'jenis'         => $request->jenis,
                 'status_sekre'  => $request->status_sekre,
-                'status_ketua'  => 4
+                'status_ketua'  => 5,
+                'catatan'       => $request->catatan
             ];
         
             SuratModel::where('id', $request->id)->update($data);

@@ -59,7 +59,7 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="{{url('ketua/ajukan-masuk/update')}}" method="POST" id="demo-form2"
+                        <form action="{{url('ketua/ajukan-surat/tolak/')}}" method="POST" id="demo-form2"
                             data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -96,9 +96,9 @@
                                 </div>
                             </div> -->
                             <div class="item form-group">
-                                <label for="formFileMultiple" class="col-form-label col-md-3 col-sm-3 label-align">Lampiran</label>
+                                <label for="formFileMultiple" class="col-form-label col-md-3 col-sm-3 label-align">Catatan</label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input id="photoInput" class="form-control" type="file" name="lampiran" placeholder="isikan foto produk" required>
+                                    <input id="photoInput" class="form-control" type="text" name="catatan" value="{{$surat->catatan}}" required>
                                 </div>
                             </div>
                             <!-- <div class="item form-group">

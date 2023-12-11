@@ -38,6 +38,8 @@ Route::middleware(['login'])->group(function () {
         Route::get('ketua/template-surat/', 'Ketua\TemplateSuratController@index')->name('ketua.template-surat.index');
         Route::delete('ketua/template-surat/{id}/destroy', 'Ketua\TemplateSuratController@destroy')->name('ketua.template-surat.destroy');
         Route::get('ketua/PDF/{id}','Ketua\PDFController@index');
+        // {{ route('ketua.ajukansurat.tolak', ['id' => $p->id]) }}
+        Route::resource('ketua/ajukan-surat/tolak/','Ketua\AjukanSuratController');
         Route::get('ketua/PDF/{id}/download', 'Ketua\PDFController@download')->name('ketua.pdf.download');
 
         Route::resource('ketua/rev-dashboard', ('Ketua\DashboardController'));

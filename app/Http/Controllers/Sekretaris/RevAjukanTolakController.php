@@ -115,7 +115,7 @@ class RevAjukanTolakController extends Controller
                     $documentFile->move("Assets/Admin/Upload", $documentFileName);
             }
             $data = [
-                'id_users'      => session()->get('id'),
+                'id_users'      => $request->id_users,
                 'lampiran'      => $request->lampiran,
                 'jenis'         => $request->jenis,
                 'status_sekre'  => 2,
@@ -128,7 +128,7 @@ class RevAjukanTolakController extends Controller
             return redirect("$this->url")->with('sukses', 'Lampiran berhasil diedit');
         }else{
             $data = [
-                'id_users'      => session()->get('id'),
+                'id_users'      => $request->id_users,
                 // 'lampiran'      => $documentFileName,
                 'jenis'         => $request->jenis,
                 'status_sekre'  => 2,

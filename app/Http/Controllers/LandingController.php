@@ -16,7 +16,7 @@ class LandingController extends Controller
     {
         $data =[
             'title'     => $this->title,
-            'page'      => 'Arsip Surat Pemprov Jateng',
+            'page'      => 'Arsip Surat Himpunan Mahasiswa',
             'footer'    => 'Arsip Surat - Pemerintah Provinsi Jawa Tengah',
         ];
 

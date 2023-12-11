@@ -42,7 +42,7 @@
         <div class="container d-flex align-items-center">
 
             <div class="logo me-auto">
-                <h1><a href="index.html">Pemerintah Provinsi Jawa Tengah</a></h1>
+                <h1><a href="index.html">Universitas Negri Semarang</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="{{url('')}}/Assets/Landing/assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>

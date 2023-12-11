@@ -77,7 +77,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="https://humas.jatengprov.go.id/foto/1622767670852-Logo%20Provinsi%20Jawa%20Tengah%20(PNG-1080p)%20-%20FileVector69.png"
+                            <img src="{{url('')}}/Assets/Landing/assets/img/unnes2.png"
                                 alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
@@ -197,7 +197,7 @@
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="https://humas.jatengprov.go.id/foto/1622767670852-Logo%20Provinsi%20Jawa%20Tengah%20(PNG-1080p)%20-%20FileVector69.png"
+                                    <img src="{{url('')}}/Assets/Landing/assets/img/unnes2.png"
                                         alt="">{{session()->get('nama_lengkap')}}
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right"

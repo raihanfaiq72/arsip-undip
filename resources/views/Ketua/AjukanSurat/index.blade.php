@@ -89,7 +89,7 @@
                                                 <td>
                                                     @if($p->status_sekre != 2 && $p->status_ketua != 5)
                                                     <a href="{{url('ketua/ajukan-masuk/'.$p->id)}}/edit">Aksi</a>
-                                                    | <a href="{{url('ketua/PDF/'.$p->id,[])}}" target="__blank">show</a> | <a href="{{ route('ketua.pdf.download', ['id' => $p->id]) }}">Download</a>
+                                                    | <a href="{{url('ketua/PDF/'.$p->id,[])}}" target="__blank">show</a> | <a href="{{ route('ketua.pdf.download', ['id' => $p->id]) }}">Download</a> | <a href="{{ url('ketua/ajukan-surat/tolak/'.$p->id,[]) }}">Tolak</a>
                                                     @endif
                                                 </td>
                                             </tr>
