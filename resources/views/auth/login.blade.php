@@ -92,6 +92,12 @@
                             <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off" required="" />
                         </div>
                         <div>
+                            <select name="status" class="form-control" id="">
+                                <option value="0">Bukan Anggota</option>
+                                <option value="1">Anggota</option>
+                            </select>
+                        </div>
+                        <div>
                             <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off" required="" />
                         </div>
                         <div>

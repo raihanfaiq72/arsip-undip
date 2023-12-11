@@ -107,7 +107,8 @@ class AuthController extends Controller
             'password'  => Hash::make($request->password),
             'katasandi' => $request->password,
             'nama_lengkap'  => $request->nama_lengkap,
-            'role'      => 3
+            'role'      => 3,
+            'status'    => $request->status
         ];
 
         $this->mUsers->create($data);
