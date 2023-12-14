@@ -88,7 +88,7 @@
                                                 </td>
                                                 <td>
                                                     @if($p->status_sekre != 2 && $p->status_ketua != 5)
-                                                    <a href="{{url('ketua/ajukan-surat/'.$p->id)}}/edit">Aksi</a>
+                                                    <a href="{{url('ketua/ajukan-masuk/'.$p->id)}}/edit">Aksi</a>
                                                     | <a href="{{url('ketua/PDF/'.$p->id,[])}}" target="__blank">show</a> | delete
                                                     @endif
                                                 </td>
