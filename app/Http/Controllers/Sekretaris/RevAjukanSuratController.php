@@ -101,7 +101,7 @@ class RevAjukanSuratController extends Controller
                 'id_users'      => session()->get('id'),
                 'lampiran'      => $documentFileName,
                 'jenis'         => $request->jenis,
-                'status_sekre'  => 2,
+                'status_sekre'  => 3,
                 'status_ketua'  => $request->status_ketua,
                 'catatan'       => $request->catatan
             ];
@@ -114,7 +114,7 @@ class RevAjukanSuratController extends Controller
                 'id_users'      => session()->get('id'),
                 // 'lampiran'      => $documentFileName,
                 'jenis'         => $request->jenis,
-                'status_sekre'  => 2,
+                'status_sekre'  => 3,
                 'status_ketua'  => $request->status_ketua,
                 'catatan'       => $request->catatan
             ];
