@@ -98,10 +98,10 @@ class RevAjukanSuratController extends Controller
                     $documentFile->move("Assets/Admin/Upload", $documentFileName);
             }
             $data = [
-                'id_users'      => session()->get('id'),
+                'id_users'      => $request->id_users,
                 'lampiran'      => $documentFileName,
                 'jenis'         => $request->jenis,
-                'status_sekre'  => 3,
+                'status_sekre'  => 1,
                 'status_ketua'  => $request->status_ketua,
                 'catatan'       => $request->catatan
             ];
@@ -114,7 +114,7 @@ class RevAjukanSuratController extends Controller
                 'id_users'      => session()->get('id'),
                 // 'lampiran'      => $documentFileName,
                 'jenis'         => $request->jenis,
-                'status_sekre'  => 3,
+                'status_sekre'  => 1,
                 'status_ketua'  => $request->status_ketua,
                 'catatan'       => $request->catatan
             ];

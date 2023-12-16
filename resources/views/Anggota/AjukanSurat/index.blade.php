@@ -55,6 +55,7 @@
                                                 <th>No</th>
                                                 <th>Jenis</th>
                                                 <th>Lampiran</th>
+                                                <th>Status Sekretaris</th>
                                                 <th>status ketua</th>
                                                 <th>Action</th>
                                             </tr>

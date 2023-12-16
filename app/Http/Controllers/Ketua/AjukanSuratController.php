@@ -132,7 +132,7 @@ class AjukanSuratController extends Controller
                 'lampiran'      => $documentFileName,
                 'jenis'         => $request->jenis,
                 'status_sekre'  => $request->status_sekre,
-                'status_ketua'  => 4
+                'status_ketua'  => 5
             ];
         
             SuratModel::where('id', $request->id)->update($data);
@@ -144,7 +144,7 @@ class AjukanSuratController extends Controller
                 // 'lampiran'      => $documentFileName,
                 'jenis'         => $request->jenis,
                 'status_sekre'  => $request->status_sekre,
-                'status_ketua'  => 4
+                'status_ketua'  => 5
             ];
         
             SuratModel::where('id', $request->id)->update($data);
