@@ -116,8 +116,10 @@ class AjukanSuratTolakController extends Controller
             // 'lampiran'  => 'required|file|mimes:pdf,doc,docx',
         ]);
     
-        $fileExtension = $request->file('lampiran')->extension();
-        $allowedImageExtensions = ['jpeg', 'jpg', 'png'];
+        // $fileExtension = $request->file('lampiran')->extension();
+        // $allowedImageExtensions = ['jpeg', 'jpg', 'png'];
+        $fileExtension = null;
+        $allowedImageExtensions= null;
     
         // Handle document upload
         if(isset($request->lampiran)){

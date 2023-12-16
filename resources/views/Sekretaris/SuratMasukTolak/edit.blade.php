@@ -66,6 +66,7 @@
                             <input type="hidden" name="id" value="{{$surat->id}}">
                             <input type="hidden" name="status_ketua" value="{{$surat->status_ketua}}">
                             <input type="hidden" name="lampiran" value="{{$surat->lampiran}}">
+                            <input type="hidden" name="id_users" value="{{$surat->id_users}}">
                             <div class="item form-group">
                                 <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Jenis
                                     Surat

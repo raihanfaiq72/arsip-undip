@@ -59,8 +59,9 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="{{url('ketua/ajukan-surat/tolak/')}}" method="POST" id="demo-form2"
-                            data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+                        <form action="{{ route('ketua.ajukan-surat.tolak.update', ['id' => $surat->id]) }}" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+
+
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="id" value="{{$surat->id}}">

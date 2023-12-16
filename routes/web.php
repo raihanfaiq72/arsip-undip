@@ -43,7 +43,8 @@ Route::middleware(['login'])->group(function () {
         Route::get('ketua/PDF/{id}/download', 'Ketua\PDFController@download')->name('ketua.pdf.download');
 
         Route::resource('ketua/rev-dashboard', ('Ketua\DashboardController'));
-    });
+        Route::get('ketua/ajukan-surat/tolak/{id}',('Ketua\AjukanSuratTolakController@tolak'));
+    });Route::put('ketua/ajukan-surat/tolak/{id}', ('Ketua\AjukanSuratTolakController@update'))->name('ketua.ajukan-surat.tolak.update');
 
     Route::middleware(['Sekretaris'])->group(function () {
         // Route::resource('sekretaris/dashboard', ('Sekretaris\SekretarisController'));
